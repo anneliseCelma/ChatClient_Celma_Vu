@@ -3,6 +3,8 @@ package com.chat.client;
 import com.chat.commun.evenement.Evenement;
 import com.chat.commun.evenement.GestionnaireEvenement;
 import com.chat.commun.net.Connexion;
+import java.net.Socket;
+
 
 /**
  * Cette classe représente un gestionnaire d'événement d'un client. Lorsqu'un client reçoit un texte d'un serveur,
@@ -34,6 +36,8 @@ public class GestionnaireEvenementClient implements GestionnaireEvenement {
         Connexion cnx;
         String typeEvenement, arg;
         String[] membres;
+       
+       
 
         if (source instanceof Connexion) {
             cnx = (Connexion) source;
@@ -49,8 +53,28 @@ public class GestionnaireEvenementClient implements GestionnaireEvenement {
                     for (String s:membres)
                         System.out.println("\t\t\t- "+s);
                     break;
+                case "HIST":
+                	String historique=evenement.getArgument();
+                	String[] messages =historique.split("\n");
+                	for (String message : messages) {
+                		System.out.println("\t\t\t. "+message);
+                	}
+                	break;
+                case "JOIN":
+                	
+                	//String aliasInvite= evenement.getArgument();
+                	System.out.println("Vous avez reçu une invitation de . Vous pouvez ACCEPT ou DECLINE");
+            
+                	break;
+                case "JOIN ACCEPT":
+                	System.out.println("L'invitation a été accepté par"+evenement.getArgument());
+                	break;
+                
+                case "JOIN DECLINE":
+                	System.out.println("L'invitation a été refusée par"+evenement.getArgument());
                 default: //Afficher le texte recu :
                     System.out.println("\t\t\t."+evenement.getType()+" "+evenement.getArgument());
+                    
             }
         }
     }
