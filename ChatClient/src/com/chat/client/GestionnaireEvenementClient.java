@@ -60,19 +60,15 @@ public class GestionnaireEvenementClient implements GestionnaireEvenement {
                 		System.out.println("\t\t\t. "+message);
                 	}
                 	break;
-                case "JOIN":
-                	
-                	//String aliasInvite= evenement.getArgument();
-                	System.out.println("Vous avez reçu une invitation de . Vous pouvez ACCEPT ou DECLINE");
-            
+                case "INV":
+                	String inv=evenement.getArgument();
+                	String[] invitations=inv.split("\n");
+                	for (String invitation : invitations) {
+                		System.out.println("\t\t\t. "+invitation);
+                	}
                 	break;
-                case "JOIN ACCEPT":
-                	System.out.println("L'invitation a été accepté par"+evenement.getArgument());
-                	break;
-                
-                case "JOIN DECLINE":
-                	System.out.println("L'invitation a été refusée par"+evenement.getArgument());
-                default: //Afficher le texte recu :
+               
+                default: 
                     System.out.println("\t\t\t."+evenement.getType()+" "+evenement.getArgument());
                     
             }
