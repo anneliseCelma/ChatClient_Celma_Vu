@@ -8,7 +8,6 @@ public class EtatPartieEchecs {
 		this.etatEchiquier=new char[8][8];
 	}
 	
-	
 	public char[][] getEtatPartieEchecs() {
 		return etatEchiquier;
 	}
@@ -19,33 +18,51 @@ public class EtatPartieEchecs {
 	
 	@Override
 	public String toString() {
-		StringBuilder matrice=new StringBuilder();
+	StringBuilder matrice=new StringBuilder();
 
-        for (int i = 0; i < etatEchiquier.length; i++) {
-            for (int j = 0; j < etatEchiquier.length; j++) {
-            	etatEchiquier[i][0] = (char) (i + '1');
-            	 char[] lowerCaseLetters = {'t', 'c', 'f', 'd', 'r', 'f', 'c', 't'};
-                 etatEchiquier[0][1] = lowerCaseLetters[i];
-                  
-               
+for (int i = 0; i < etatEchiquier.length; i++) {
+    for (int j = 0; j < etatEchiquier[i].length; j++) {
+        if (j == 0) {
+            etatEchiquier[i][j] = (char) (i + '1'); 
+            if(i==8) {
+            	 etatEchiquier[i][j] = ' ';
             }
+        } else if (i == 0) {
+            char[] lowerCaseLetters = {'t', 'c', 'f', 'd', 'r', 'f', 'c', 't'};
+            etatEchiquier[i][j] = lowerCaseLetters[j - 1]; 
+        } else if (i == 1 || i == 6) {
+        	if (i == 1) {
+        	    etatEchiquier[i][j] = 'p';
+        	} else {
+        	    etatEchiquier[i][j] = 'P';
+        	} 
+        } else if (i > 1 && i < 6) {
+            etatEchiquier[i][j] = '.'; 
+        } else if (i == 7) {
+            char[] upperCaseLetters = {'T', 'C', 'F', 'D', 'R', 'F', 'C', 'T'};
+            etatEchiquier[i][j] = upperCaseLetters[j - 1];
         }
-
-        for (int i = 0; i < etatEchiquier.length; i++) {
-            for (int j = 0; j < etatEchiquier[i].length; j++) {
-                matrice.append(etatEchiquier[i][j]);
-            }
-            matrice.append("\n");
+        else if (i == 8) {
+            char[] upperCaseLetters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+            etatEchiquier[i][j] = upperCaseLetters[j - 1]; 
         }
+    }
+}
 
-        System.out.println(matrice.toString());
-		return matrice.toString();
-	}
+// Affichage 
+for (int i = 0; i < etatEchiquier.length; i++) {
+    for (int j = 0; j < etatEchiquier[i].length; j++) {
+        matrice.append(etatEchiquier[i][j]).append(' ');
+    }
+    matrice.append('\n');
+}
 
+return (matrice.toString());
+
+    }
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 	}
-
 }
