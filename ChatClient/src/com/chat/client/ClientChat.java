@@ -11,21 +11,21 @@ package com.chat.client;
 public class ClientChat extends Client {
     //Cette classe est pour le moment vide et sera compléter dans le TP.
 	
-//	private EtatPartieEchecs etatPartieEchecs;
-//	
-//	
-//	public EtatPartieEchecs getEtatPartieEchecs() {
-//		return etatPartieEchecs;
-//	}
-//	
-//	public void setEtatPartieEchecs(EtatPartieEchecs nvEtat) {
-//		this.etatPartieEchecs=nvEtat;
-//	}
+	private EtatPartieEchecs etatPartieEchecs;
 	
-//	public void nouvellePartie() {
-//		this.etatPartieEchecs= new EtatPartieEchecs('0');
-//	
-//	}
+	
+	public EtatPartieEchecs getEtatPartieEchecs() {
+		return etatPartieEchecs;
+	}
+	
+	public void setEtatPartieEchecs(EtatPartieEchecs nvEtat) {
+		this.etatPartieEchecs=nvEtat;
+	}
+	
+	public void nouvellePartie() {
+		this.etatPartieEchecs = new EtatPartieEchecs();
+	
+	}
 	
 	
 }
