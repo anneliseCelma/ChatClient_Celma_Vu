@@ -62,9 +62,10 @@ public class GestionnaireEvenementClient implements GestionnaireEvenement {
                 	break;
                 case "INV":
                 	String inv=evenement.getArgument();
-                	String[] invitations=inv.split("\n");
-                	for (String invitation : invitations) {
-                		System.out.println("\t\t\t. "+invitation);
+                	String[] Invitations=inv.split(":");
+                	System.out.println("\t\t Voici la liste de vos invitations :");
+                	for (String invitation : Invitations) {
+                		System.out.println("\t\t\t- "+ invitation);
                 	}
                 	break;
                
