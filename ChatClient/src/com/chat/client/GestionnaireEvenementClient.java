@@ -16,6 +16,7 @@ import java.net.Socket;
  */
 public class GestionnaireEvenementClient implements GestionnaireEvenement {
     private Client client;
+    private boolean commenceEchec;
 
     /**
      * Construit un gestionnaire d'événements pour un client.
@@ -42,6 +43,8 @@ public class GestionnaireEvenementClient implements GestionnaireEvenement {
         if (source instanceof Connexion) {
             cnx = (Connexion) source;
             typeEvenement = evenement.getType();
+            commenceEchec = false;
+            
             switch (typeEvenement) {
                 case "END" : //Le serveur demande de fermer la connexion
                     client.deconnecter(); //On ferme la connexion
