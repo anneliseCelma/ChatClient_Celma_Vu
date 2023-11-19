@@ -71,6 +71,11 @@ public class GestionnaireEvenementClient implements GestionnaireEvenement {
                 		System.out.println("\t\t\t- "+ invitation);
                 	}
                 	break;
+                case "MOVE":
+                	String POS=evenement.getArgument();
+                	System.out.println("\t\t Mouvement d'échecs : " + POS);
+                	
+                	break;
                
                 default: 
                     System.out.println("\t\t\t."+evenement.getType()+" "+evenement.getArgument());
